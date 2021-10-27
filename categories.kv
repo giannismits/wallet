@@ -1,0 +1,104 @@
+
+
+<SelectableLabelexp>:
+    on_press:
+        root.pressed_view(root.parent.data)
+    # Draw a background to indicate selection
+    canvas.before:
+        Color:
+            rgba: (.0, 0.9, .1, .3) if self.selected else (0, 0, 0, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    ImageLeftWidget:
+        source: "gorc.jpeg"
+
+
+
+
+<RecycleCatExcpences>:
+    id: rvcat
+    
+    viewclass: 'SelectableLabelexp'
+    SelectableRecycleBoxLayout:
+        data: root.data
+        default_size: None, dp(56)
+        default_size_hint: 1, None
+        size_hint_y: None
+        height: self.minimum_height
+        orientation: 'vertical'
+        multiselect: True
+        touch_multiselect: True
+
+<Tab>:
+    orientation: 'vertical'
+    padding: 10, 10, 10, 10
+    spacing:10
+    background_color: 1,0,1,0
+    canvas.before:
+        Color:
+            rgba: 1, 0, 1, 0
+        Rectangle: #woohoo!!!
+            size:self.size
+            pos: self.pos
+
+    pos_hint: {"center_x": 0, "center_y": .5}
+
+<categories>:
+    orientation: 'vertical'
+    padding: 10, 10, 10, 10
+    spacing:10
+    background_color: 1,0,1,0
+    canvas.before:
+        Color:
+            rgba: 1, 0, 1, 0
+        Rectangle: #woohoo!!!
+            size:self.size
+            pos: self.pos
+
+    pos_hint: {"center_x": .5, "center_y": .4}
+    BoxLayout:
+        canvas:
+            Color:
+                rgba: 1, 1, 0.5, 0.5
+            Rectangle: #woohoo!!!
+                size:self.size
+                pos: self.pos
+        pos_hint:{"center_x":.5,"center_y":.7}
+
+        MDTabs:
+            Tab:
+                title: "Tab 1"
+                text:"Expenses"
+                pos_hint:{"center_x":.5,"center_y":.5}
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y:.1
+                    MDTextField:
+                        id:id_cat
+                        hint_text: "Add Category"
+                    
+                    MDIconButton:
+                        
+                        icon:"plus"
+                        theme_text_color: "Custom"
+                        text_color: 0, 0, 1, 1
+                        on_release:root.add_category(id_cat.text)
+                RecycleCatExcpences:
+                    icon: "android"
+                    elevation_normal: 12
+                    pos_hint:{"center_x":.5,"center_y":.6}
+                    
+                   
+
+            Tab:
+                title: "Tab 2"
+                text:"Incomes"
+                MDTextField:
+                    hint_text: "Amount"
+                    pos_hint:{"center_x":1,"center_y":.9}
+                MDRoundFlatButton:
+                    pos_hint:{"center_x":1,"center_y":.5}
+                    text: "Add to account"
+                    theme_text_color: "Custom"
+                    text_color: 0, 0, 1, 1

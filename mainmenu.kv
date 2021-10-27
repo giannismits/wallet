@@ -1,0 +1,163 @@
+#:include welcome.kv
+#:include mainscreen.kv
+#:include categories.kv
+
+
+<ContentNavigationDrawer>:
+
+    ScrollView:
+
+        MDList:
+
+            OneLineListItem:
+                text: "Main screen"
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "scr 1"
+
+            OneLineListItem:
+                text: "Accounts"
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "scr 2"
+            OneLineListItem:
+                text: "Transactions"
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "scr 3"
+
+            OneLineListItem:
+                text: "Shedule Transactions"
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "scr 4"
+            
+            OneLineListItem:
+                text: "Budgets"
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "scr 5"
+
+            OneLineListItem:
+                text: "Charts"
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "scr 6"
+
+            OneLineListItem:
+                text: "Categories"
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "scr 7"
+
+            OneLineListItem:
+                text: "Goals"
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "scr 8"
+            OneLineListItem:
+                text: "Tags"
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "scr 9"
+
+            OneLineListItem:
+                text: "Currencies"
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "scr 10"
+            
+            OneLineListItem:
+                text: "Help"
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "scr 11"
+
+            OneLineListItem:
+                text: "Data exports"
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "scr 12"
+            
+            OneLineListItem:
+                text: "Settings"
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "scr 12"
+
+
+Screen:
+
+    MDToolbar:
+        id: toolbar
+        pos_hint: {"top": 1}
+        elevation: 10
+        title: "MDNavigationDrawer"
+        left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+
+    MDNavigationLayout:
+        x: toolbar.height
+
+        ScreenManager:
+            id: screen_manager
+
+            Screen:
+                name: "scr 1"
+
+                MainScreen:
+
+
+            Screen:
+                name: "scr 2"
+
+                MDLabel:
+                    text: "Screen 2"
+                    halign: "center"
+
+            Screen:
+                name: "scr 3"
+
+                MDLabel:
+                    text: "Screen 3"
+                    halign: "center"
+
+            Screen:
+                name: "scr 4"
+
+                MDLabel:
+                    text: "Screen 4"
+                    halign: "center"
+
+            Screen:
+                name: "scr 5"
+
+                MDLabel:
+                    text: "Screen 5"
+                    halign: "center"
+
+            Screen:
+                name: "scr 6"
+
+                MDLabel:
+                    text: "Screen 6"
+                    halign: "center"
+            
+            Screen:
+                name: "scr 7"
+
+                Categories:
+
+            Screen:
+                name: "scr 8"
+
+                MDLabel:
+                    text: "Screen 8"
+                    halign: "center"
+
+        MDNavigationDrawer:
+            id: nav_drawer
+
+            ContentNavigationDrawer:
+                screen_manager: screen_manager
+                nav_drawer: nav_drawer       
+        
